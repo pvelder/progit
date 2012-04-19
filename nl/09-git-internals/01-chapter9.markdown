@@ -4,7 +4,7 @@ Je zult misschien naar dit hoofdstuk gesprongen zijn vanuit een vorig hoofdstuk,
 
 Laten we beginnen, nu je hier bent. Als eerste, mocht het nog niet duidelijk zijn, is Git eigenlijk een inhouds-toegankelijk bestandssysteem met een gebruikersinterface voor versiebeheer er bovenop geschreven. Je zult over een poosje meer leren over wat dit betekent.
 
-In de eerste dagen van Git (het meerendeel pre 1.5), wat de gebruikersinterface veel complexer, omdat het de nadruk legde op dit bestandssysteem in plaats van op een gepolijst VCS. De laatste paar jaren is de interface verfijnd totdat het zo netjes en eenvoudig te gebruiken is als ieder systeem dat er bestaat; maar vaak blijft het stereotype hangen over de vroegere Gitinterface, die complex was en moeilijk te leren.
+In de eerste dagen van Git (het merendeel pre 1.5), wat de gebruikersinterface veel complexer, omdat het de nadruk legde op dit bestandssysteem in plaats van op een gepolijst VCS. De laatste paar jaren is de interface verfijnd totdat het zo netjes en eenvoudig te gebruiken is als ieder systeem dat er bestaat; maar vaak blijft het stereotype hangen over de vroegere Gitinterface, die complex was en moeilijk te leren.
 
 Deze laag met het inhouds-toegankelijke bestandssysteem is ongelofelijk gaaf, dus dat behandel ik dat als eerste dit hoofdstuk; daarna leer je over de transportmechanismen en het onderhouden van je repository's, iets waar je uiteindelijk te maken mee kunt krijgen.
 
@@ -33,7 +33,7 @@ Dit laat vier belangrijke vermeldingen over: de bestanden `HEAD` en `index`, en 
 
 ## Git Objecten ##
 
-Git is een inhouds-adresseerbaar bestandssysteem. Mooi. Wat betekend dat?
+Git is een inhouds-adresseerbaar bestandssysteem. Mooi. Wat betekent dat?
 Het betekend dat in de kern van Git een eenvoudige sleutel-waarde gegevens opslag zit. Je kunt er ieder soort inhoud in stoppen, en het zal je een sleutel geven dije kunt gebruiken om de inhoud op ieder moment terug te krijgen. Om te demonstreren, kun je het sanitaire voorzieningen commando `hash-object` gebruiken, die wat gegevens aanneemt, het in je `.git` map opslaat, en je de sleutel teruggeeft waarmee de gegevens zijn opgelsagen. Als eerste initialiseer je een nieuw Git repository en verifieer je dat er niets in de `objects` map staat:
 
 	$ mkdir test
@@ -124,7 +124,7 @@ Je kunt je eigen boom maken. Normaal gesproken maakt Git een boom door de status
 	$ git update-index --add --cacheinfo 100644 \
 	  83baae61804e65cc73a7201a7252750c76066a30 test.txt
 
-In dit geval specificeer je een mode van `100644`, wat betekend dat het een normaal bestand is. Andere opties zijn `100755`, wat betekend dat het een uitvoerbaar bestand is; en `120000`, wat een symbolische link specificeerd. De mode is genomen van normale UNIX modes, maar is veel minder flexibel – deze drie modi zijn de enigen die geldig zijn voor bestanden (blobs) in Git (alhoewel andere modi worden gebruikt voor mappen en submodules).
+In dit geval specificeer je een mode van `100644`, wat betekent dat het een normaal bestand is. Andere opties zijn `100755`, wat betekent dat het een uitvoerbaar bestand is; en `120000`, wat een symbolische link specificeerd. De mode is genomen van normale UNIX modes, maar is veel minder flexibel – deze drie modi zijn de enigen die geldig zijn voor bestanden (blobs) in Git (alhoewel andere modi worden gebruikt voor mappen en submodules).
 
 Nu kun je het `write-tree` commando gebruiken om het staging gebied naar een boomobject te schrijven. Er is geen `-w` optie nodig – `write-tree` aanroepen zorgt er automatisch voor dat een boomobject gecreëeerd wordt van de status van de index als die boom nog niet bestaat:
 
@@ -713,7 +713,7 @@ Bijvoorbeeld, stel dat je `git push origin master` uitvoert in je project, en `o
 
 Het `git-receive-pack` commando antwoord onmiddelijk met één regel voor iedere referentie die het momenteel heeft – in dit geval alleen de `master` branch en zijn SHA. De eerste regel bevat ook een lijst van de mogelijkheden van de server (in dit geval, `report-status` en `delete-refs`).
 
-Iedere regel begint met een hexadecimale waarde van 4 bytes, die specificeert hoe lang de rest van de regel is. Je eerste regel begint met 005b, wat 91 in hex is, wat betekend dat er nog 91 bytes over zijn op deze regel. De volgende regel begint met 003e, wat 62 is, zodat je de overgebleven 62 bytes leest. De volgende regel is 0000, wat betekent dat de server klaar is met het tonen van zijn referenties.
+Iedere regel begint met een hexadecimale waarde van 4 bytes, die specificeert hoe lang de rest van de regel is. Je eerste regel begint met 005b, wat 91 in hex is, wat betekent dat er nog 91 bytes over zijn op deze regel. De volgende regel begint met 003e, wat 62 is, zodat je de overgebleven 62 bytes leest. De volgende regel is 0000, wat betekent dat de server klaar is met het tonen van zijn referenties.
 
 Nu dat het de status van de server weet, bepaalt je `send-pack` proces welke commits dat het heeft, die de server nog niet heeft. Voor iedere referentie die deze push zal vernieuwen, verteld het `send-pack` het `receive-pack` proces die informatie. Bijvoorbeeld, als je de `master` branch vernieuwt en een `experiment` branch toevoegt, zou het `send-pack` antwoord er zo uit kunnen zien:
 
@@ -766,7 +766,7 @@ Soms moet je wat opruimen – een repository compacter maken, een geimporteerd r
 
 ### Onderhoud ###
 
-Soms voert Git automatisch een commando genaamg "auto gc" uit. Het meerendeel van de tijd doet dit commando niets. Maar, als je teveel losse objecten (objecten die niet in een packfile zitten) of teveel packfiles hebt, dan lanceert Git een volledig `git gc` commando. Het `gc` staat voor garbage collect (afval ophalen), en het commando doet een aantal zaken: het haalt alle losse objecten op en stopt ze in packfiles, het voegt packfiles samen in één grote packfile, en het verwijderd objecten die niet bereikbaar zijn vanuit een commit en die een paar maanden oud zijn.
+Soms voert Git automatisch een commando genaamd "auto gc" uit. Het merendeel van de tijd doet dit commando niets. Maar, als je teveel losse objecten (objecten die niet in een packfile zitten) of teveel packfiles hebt, dan lanceert Git een volledig `git gc` commando. Het `gc` staat voor garbage collect (afval ophalen), en het commando doet een aantal zaken: het haalt alle losse objecten op en stopt ze in packfiles, het voegt packfiles samen in één grote packfile, en het verwijderd objecten die niet bereikbaar zijn vanuit een commit en die een paar maanden oud zijn.
 
 Je kunt auto gc als volgt handmatig uitvoeren:
 
