@@ -52,19 +52,19 @@ Git heeft de `objects` map geinitialiseerd en de `pack` en `info` submappen erin
 	$ echo 'test content' | git hash-object -w --stdin
 	d670460b4b4aece5915caf5c68d12f560a9fe3e4
 
-De `-w` verteld `hash-object` dat het object opgeslagen moet worden; anders zal het commando je alleen vertellen wat de sleutel zou zijn. `--stdin` verteld het commando dat het moet lezen van stdin; als je dit niet specificeerd verwatch `hash-object` een pad naar een bestand. De uitvoer van het commando is een hash checksum van 40 karakters. Dit is de SHA-1 hash – een checksum van de inhoud die je opslaat plus een kop, waarover je zometeen meer zult leren. Nu kun je zien hoe Git je gegevens opgeslagen heeft:
+De `-w` vertelt `hash-object` dat het object opgeslagen moet worden; anders zal het commando je alleen vertellen wat de sleutel zou zijn. `--stdin` vertelt het commando dat het moet lezen van stdin; als je dit niet specificeert verwacht `hash-object` een pad naar een bestand. De uitvoer van het commando is een hash checksum van 40 karakters. Dit is de SHA-1 hash – een checksum van de inhoud die je opslaat plus een kop, waarover je zometeen meer zult leren. Nu kun je zien hoe Git je gegevens opgeslagen heeft:
 
 	$ find .git/objects -type f 
 	.git/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4
 
-Je kunt een bestand in de `objects` map zien. Dit is hoe Git de inhoud initieel opslaat – as een enkel bestand per stuk inhoud, vernoemd naar de SHA-1 checksum van de inhoud en z'n kop. De submap is vernoemd naar de eerste 2 karakters van de SHA, het het bestandsnaam zijn de overige 38 karakters.
+Je kunt een bestand in de `objects` map zien. Dit is hoe Git de inhoud initieel opslaat – als een enkel bestand per stuk inhoud, vernoemd naar de SHA-1 checksum van de inhoud en z'n kop. De submap is vernoemd naar de eerste 2 karakters van de SHA, het het bestandsnaam zijn de overige 38 karakters.
 
-Je kunt de inhoud terug uit Git halen met het `cat-file` commando. Dit commando is een soort Zwitsers zakmes om Git objecten mee te inspecteren. Door de `-p` optie mee te geven, instrueer je het `cat-file` commando om uit te zoeken van het type van de inhoud is en om het netjes aan je te tonen:
+Je kunt de inhoud terug uit Git halen met het `cat-file` commando. Dit commando is een soort Zwitsers zakmes om Git objecten mee te inspecteren. Door de `-p` optie mee te geven, instrueer je het `cat-file` commando om uit te zoeken wat het type van de inhoud is en om het netjes aan je te tonen:
 
 	$ git cat-file -p d670460b4b4aece5915caf5c68d12f560a9fe3e4
 	test content
 
-Nu kun je inhoud aan Git toevoegen, en het er weer uit halen. Je kunt dit ook doen met inhoud in bestanden. Bijvoorbeeld, je kunt wat eenvoudig versie beheer op een bestand doen. Als eerste maak je een nieuw bestand en slaat de inhoud op in je databank:
+Nu kun je inhoud aan Git toevoegen, en het er weer uit halen. Je kunt dit ook doen met inhoud in bestanden. Bijvoorbeeld, je kunt wat eenvoudig versiebeheer op een bestand doen. Als eerste maak je een nieuw bestand en slaat de inhoud op in je databank:
 
 	$ echo 'version 1' > test.txt
 	$ git hash-object -w test.txt 
