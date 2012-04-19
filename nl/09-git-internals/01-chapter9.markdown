@@ -2,7 +2,7 @@
 
 Je zult misschien naar dit hoofdstuk gesprongen zijn vanuit een vorig hoofdstuk, of je zult hier gekomen zijn nadat je de rest van het boek gelezen hebt – in ieder geval, zal hier het binnenwerk en implementatie van Git behandeld worden. Ik heb gemerkt dat het leren van deze informatie van fundamenteel belang is om te begrijpen hoe bruikbaar en krachtig Git is, maar anderen hebben daar tegenin gebracht dat het erg verwarrend en onnodig complex kan zijn voor beginners. Daarom heb ik deze beschrijving het laatste hoofdstuk gemaakt in het boek, zodat je het vroeg of later kunt lezen in je leerproces. Ik laat het aan jou over om dat te beslissen.
 
-Laten we beginnen, nu je hier bent. Als eerste, mocht het nog niet duidelijk zijn, is Git eigenlijk een inhouds-toegankelijk bestandssyteem met een gebruikersinterface voor versiebeheer er bovenop geschreven. Je zult over een poosje meer leren over wat dit betekent.
+Laten we beginnen, nu je hier bent. Als eerste, mocht het nog niet duidelijk zijn, is Git eigenlijk een inhouds-toegankelijk bestandssysteem met een gebruikersinterface voor versiebeheer er bovenop geschreven. Je zult over een poosje meer leren over wat dit betekent.
 
 In de eerste dagen van Git (het meerendeel pre 1.5), wat de gebruikersinterface veel complexer, omdat het de nadruk legde op dit bestandssysteem in plaats van op een gepolijst VCS. De laatste paar jaren is de interface verfijnd totdat het zo netjes en eenvoudig te gebruiken is als ieder systeem dat er bestaat; maar vaak blijft het stereotype hangen over de vroegere Gitinterface, die complex was en moeilijk te leren.
 
